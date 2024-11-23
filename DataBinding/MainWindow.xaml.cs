@@ -19,6 +19,7 @@ namespace DataBinding
         public MainWindow()
         {
             InitializeComponent();
+            DataContext = new MainWindowViewModel();
         }
     }
 }
