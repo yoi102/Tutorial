@@ -16,9 +16,9 @@ publisher1.TriggerEvent("Name");
 
 
 
-//一般的にはPublisherに返信する場合がなく、intではなくvoidを使いますが、
-//全面的な説明したいため、敢えてintにしています。
+//delegateの定義、delegateの命名は基本的にHandlerがついています。
 public delegate int MyEventHandler(string text);
+//一般的にはPublisherに返信する場合がなく、intではなくvoidを使いますが、//全面的な説明したいため、敢えてintにしています。
 
 
 internal class Publisher
