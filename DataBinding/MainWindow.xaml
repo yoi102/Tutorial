@@ -18,7 +18,7 @@
         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(TestProperty)))していないのに、UIに通知していないのに、
         なぜTestPropertyの値がUIに表示しているんですか？
         原因：DataContext = new MainWindowViewModel();　
-        DataContextがSetされている時に、このWindowは勝手にDataContextからTestPropertyの値をを取得してUIに更新しています（）　-->
+        DataContextがSetされている時に、このWindowは勝手にDataContextからTestPropertyの値を取得してUIに更新しています（）　-->
         <TextBlock Text="{Binding TestProperty}"
                    FontSize="20" />
 
