@@ -21,6 +21,7 @@ namespace DataBinding
         }
 
         public event PropertyChangedEventHandler? PropertyChanged;
+
         public int MyProperty
         {
             get { return myVar; }
@@ -37,24 +38,18 @@ namespace DataBinding
                 //senderはあっているのに、UIの数字が更新しない、なぜ？　　
                 //senderは名前がMMPPというプロパティがないから。
                 //PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("MMPP"));
-
             }
         }
+
+        public string TestProperty => "Test:";
     }
+
+
+
 
     //自分で考えてみて欲しいもの：
     //0.5ｓ毎でMyPropertyを増やしていますが、
     //なぜ、Windowの数字の変化が時に早いたり、遅いたりになってるでしょうか？
     //0.5ｓ毎で更新していないように見えるでしょうか？
     //Hint：Dispatcher
-
-
-
-
-
-
-
-
-
-
 }
