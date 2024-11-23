@@ -3,17 +3,13 @@
 Publisher publisher1 = new Publisher();
 SubscriberA subscriberA = new SubscriberA(publisher1);
 SubscriberB subscriberB = new SubscriberB(publisher1);
+//SubscriberAが先に登録していますから、
+//順番としては、必ず SubscriberA_Publisher_MyEvent メソッドが先に実行されます。
 publisher1.TriggerEvent("Name");
 //Output:
 //Name: SubscriberA
 //Name:SubscriberB
 //999
-
-//SubscriberAが先に登録していますから、
-//順番としては、必ずSubscriberA_Publisher_MyEventメソッドが先に実行されます。
-
-
-
 
 
 //delegateの定義、delegateの命名は基本的にHandlerがついています。
@@ -38,8 +34,11 @@ internal class SubscriberA
 {
     public SubscriberA(Publisher publisher)
     {
-        publisher.MyEvent += new MyEventHandler(SubscriberA_Publisher_MyEvent);//イベントに登録。MyDelegateのシグネチャに相応しいメソッドをMyDelegateにする、
-                                                                               //もし、MyEventがInvokeしたら、SubscriberA_Publisher_MyEventメソッドをCallします。
+        var _delegate = new MyEventHandler(SubscriberA_Publisher_MyEvent);//Execution。
+                                                                                      //MyEventHandlerのシグネチャに相応しいメソッドをExecutionとしてMyEventHandlerに渡します
+        publisher.MyEvent += _delegate;//イベントに登録。
+                                       //もし、MyEventがInvokeしたら、_delegateのExecutionを実行します。
+                                       //即ちSubscriberA_Publisher_MyEventメソッドをCallします。
     }
 
     private int SubscriberA_Publisher_MyEvent(string text)
